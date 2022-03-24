@@ -17,6 +17,24 @@ public:
     void trainAdditionalWorkers();
     void buildAdditionalSupply();
     void drawDebugInformation();
+	void buildAdditionalSupply();
+	void buildGateway();
+	void buildExpansionBuildings();
+	void buildCannon();
+	void buildCyberCore();
+	void buildAssimilator();
+	void getExpansionLoc();
+	void scoutEnemy();
+	void sendWorkersToGas();
+	void getExpansionLoc();
+	void scoutEnemy();
+	bool foundEnemyBase();
+	bool baseUnderattack();
+	bool expansionUnderattack();
+	bool readyForAttack();
+	void attack();
+	bool atEnemyBase(BWAPI::Unit unit);
+	void positionIdleZealots();
 
     // functions that are triggered by various BWAPI events from main.cpp
 	void onStart();
