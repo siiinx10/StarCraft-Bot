@@ -13,7 +13,6 @@ namespace Tools
     BWAPI::Unit GetDepot();
 
     bool BuildBuilding(BWAPI::UnitType type);
-    bool buildBuilding(BWAPI::UnitType type, BWAPI::TilePosition desiredPos, int maxBuildRange);
 
     void DrawUnitBoundingBoxes();
     void DrawUnitCommands();
@@ -25,3 +24,5 @@ namespace Tools
     void DrawUnitHealthBars();
     void DrawHealthBar(BWAPI::Unit unit, double ratio, BWAPI::Color color, int yOffset);
 }
+
+
