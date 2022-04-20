@@ -3,22 +3,80 @@
 #include "MapTools.h"
 
 #include <BWAPI.h>
+#include "bwem.h"
 
+namespace { auto& theMap = BWEM::Map::Instance(); }
 class StarterBot
 {
-    MapTools m_mapTools;
-
+	MapTools m_mapTools;
+	int m_extractor_count = 1;
+	int m_drones_wanted = 4;
+	int m_rushZergs = 6;
+	int m_defenseZergs = 0;
+	int m_pitsWanted = 1;
+	int m_overlordWanted = 1;
+	int m_hatWanted = 2;
+	int m_exWanted = 1;
+	int m_lairWanted = 1;
+	int m_hydraDenWanted = 1;
+	int m_hydralisk = 0;
+	int m_lurkers = 0;
+	int m_spiresWanted = 1;
+	int m_mutaliskWanted = 0;
+	int m_timer = 0;
+	bool m_rushed = false;
+	BWAPI::Unit m_scout = nullptr;
+	bool m_enemy_found = false;
+	bool m_pitBuilt = false;
+	bool m_hatcheryBuilt = false;
+	bool m_extractorBuilt = false;
+	bool m_overlordBuilt = false;
+	bool m_lairBuilt = false;
+	bool m_burrowed = false;
+	bool m_hydraDenBuilt = false;
+	bool m_spireBuilt = false;
+	bool ovie_making = false;
+	bool ovie_wanted = 2;
+	int m_rushCount = 3;
+	int m_defenseCount = 3;
+	bool m_toExtracor = false;
+	bool m_building = false;
+	BWAPI::Unit m_target;
+	BWAPI::Position m_target_position;
 public:
 
-    StarterBot();
+	StarterBot();
 
-    // helper functions to get you started with bot programming and learn the API
-    void sendIdleWorkersToMinerals();
-    void trainAdditionalWorkers();
-    void buildAdditionalSupply();
-    void drawDebugInformation();
-
-    // functions that are triggered by various BWAPI events from main.cpp
+	// helper functions to get you started with bot programming and learn the API
+	void sendIdleWorkersToMinerals();
+	void sendWorkersToExtractor();
+	void trainAdditionalWorkers();
+	void buildAdditionalSupply();
+	void drawDebugInformation();
+	bool trainAdditionalUnit(BWAPI::UnitType type);
+	void trainZergling();
+	void trainHydralisk();
+	void trainLurker();
+	void trainMutalisks();
+	void buildHatchery();
+	void buildExtractor();
+	void buildLair();
+	void buildSpawnPit();
+	void buildOverlord();
+	void buildHydraliskDen();
+	void buildSpire();
+	void researchLurker();
+	void burrowLurkers();
+	void scout();
+	void rush();
+	void sendAllZergs();
+	void checkBuildOrder();
+	bool enemyFound();
+	void enemyInRange(BWAPI::Unit unit);
+	void checkUnits();
+	void stopWorker();
+	void movetoNexus();
+	// functions that are triggered by various BWAPI events from main.cpp
 	void onStart();
 	void onFrame();
 	void onEnd(bool isWinner);
